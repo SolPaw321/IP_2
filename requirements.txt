@@ -1,0 +1,3 @@
+# Install the project and dependencies declared in pyproject.toml.
+# Run from the project root: python -m pip install -r requirements.txt
+-e .
