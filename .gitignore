@@ -7,9 +7,9 @@ build/
 dist/
 
 # Keep source recordings and generated artifacts out of version control
-data/*.wav
-results/*
-!results/.gitkeep
+#data/*.wav
+#results/*
+#!results/.gitkeep
 
 # Editor and OS files
 .vscode/

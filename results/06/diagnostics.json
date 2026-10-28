@@ -1,0 +1,61 @@
+{
+  "algorithm_revision": "ewls_pilot_and_anchor_refit_v1",
+  "input_sha256": "42e56473a4693e7947ce32011d60093ca9540d16d585eee3e4dc915eb770f19e",
+  "cleaned_sha256": "277a841a6627e6a4648d1d4b33a492ba8262077627ec3afe2f7e1f6c4eb57480",
+  "recording": "06.wav",
+  "sample_rate_hz": 22050,
+  "frames_per_channel": 440682,
+  "channels": 1,
+  "settings": {
+    "ar_order": 4,
+    "forgetting_factor": 0.999,
+    "initial_inverse_correlation": 100.0,
+    "residual_window_size": 20,
+    "detection_threshold_sigma": 3,
+    "max_impulse_length": 4,
+    "parameter_log_stride": 220,
+    "ewls_pilot_initialization": true,
+    "recompute_right_anchor_after_interpolation": true
+  },
+  "channels_summary": [
+    {
+      "channel": 1,
+      "ewls_updates": 430059,
+      "initialization_segment": [
+        10474,
+        11024
+      ],
+      "rechecked_anchor_count": 8402,
+      "residual_calibration_restarts": 104,
+      "coefficients": [
+        1.685955070074803,
+        -1.0594987675950804,
+        0.5587601014789048,
+        -0.19601720129845282
+      ],
+      "accepted_prediction_rmse_after_0_1s": 0.0237553935633836,
+      "classified_samples": 438578,
+      "unclassified_samples": 2100,
+      "flagged_samples": 10619,
+      "candidate_bursts": 8506,
+      "overlong_bursts": 104,
+      "reconstructed_bursts": 8402,
+      "reconstructed_samples": 10099,
+      "skipped_bursts": 104,
+      "skipped_reasons": {
+        "exceeds_max_length": 104
+      },
+      "final_residual_std": 0.0056176563116703245
+    }
+  ],
+  "caveats": [
+    "Detection flags are candidates, not verified click positions.",
+    "The first M residuals of the MAIN processing pass cannot be classified; candidate runs >4 are not interpolated.",
+    "Offline pilot EW-LS calibration uses up to the first 0.5 s to seed theta(0); no future data is added to the main residual window.",
+    "The main estimator retains its configured lambda and P(0), and samples are processed from the recording start.",
+    "Candidate right anchors after short bursts are checked using an interpolated AR context before an EW-LS update.",
+    "Only accepted errors update the residual history; only accepted samples update EW-LS.",
+    "Skipped-burst raw output remains unchanged, while internal AR context uses bounded predictions.",
+    "After >4 consecutive detections, residual history is restarted to avoid permanent lockout (additional heuristic)."
+  ]
+}
